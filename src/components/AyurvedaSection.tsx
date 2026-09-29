@@ -34,7 +34,7 @@ export const AyurvedaSection: React.FC = () => {
   /*
    * =========================================================
    * SECTION VISIBILITY
-   * Carousel only becomes active when Ayurveda is visible
+   * Carousel becomes active only when Ayurveda is visible
    * =========================================================
    */
   useEffect(() => {
@@ -130,7 +130,8 @@ export const AyurvedaSection: React.FC = () => {
       if (differenceY > 0) {
         // Swipe up → next pillar
         setCurrentIndex((previousIndex) =>
-          previousIndex === AYURVEDA_SECTION_DATA.pillars.length - 1
+          previousIndex ===
+          AYURVEDA_SECTION_DATA.pillars.length - 1
             ? 0
             : previousIndex + 1
         );
@@ -168,15 +169,49 @@ export const AyurvedaSection: React.FC = () => {
       ref={sectionRef}
       id="ayurveda"
       aria-label="The Wisdom of Ayurveda"
-      className="min-h-[calc(100vh-42px)] h-[calc(100vh-42px)] flex items-center bg-[#F3E6D0] border-b border-[#A9783F]/30 overflow-hidden"
+      className="
+        min-h-[calc(100vh-42px)]
+        h-auto
+        sm:min-h-0
+        sm:h-auto
+        flex
+        items-center
+        bg-[#F3E6D0]
+        border-b
+        border-[#A9783F]/30
+        overflow-hidden
+      "
     >
-      <div className="w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+      <div
+        className="
+          w-full
+          h-auto
+          sm:h-auto
+          max-w-7xl
+          mx-auto
+          px-4
+          sm:px-6
+          lg:px-10
+        "
+      >
 
         {/* =====================================================
             DESKTOP + TABLET
-            Existing composition remains unchanged
+            Minimum viewport height, but content may grow
         ===================================================== */}
-        <div className="hidden sm:flex w-full h-full flex-col justify-center py-7 sm:py-8 lg:py-9">
+        <div
+          className="
+            hidden
+            sm:flex
+            w-full
+            h-auto
+            flex-col
+            justify-center
+            py-7
+            sm:py-8
+            lg:py-9
+          "
+        >
 
           {/* Section Header */}
           <div className="max-w-3xl mx-auto text-center mb-7 sm:mb-8">
@@ -206,7 +241,19 @@ export const AyurvedaSection: React.FC = () => {
             {AYURVEDA_SECTION_DATA.pillars.map((pillar, idx) => (
               <div
                 key={pillar.title}
-                className="bg-[#DDB477] border border-[#A9783F]/35 p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-[#A9783F]/80"
+                className="
+                  bg-[#DDB477]
+                  border
+                  border-[#A9783F]/35
+                  p-5
+                  sm:p-6
+                  flex
+                  flex-col
+                  justify-between
+                  transition-all
+                  duration-300
+                  hover:border-[#A9783F]/80
+                "
               >
 
                 <div>
@@ -279,10 +326,9 @@ export const AyurvedaSection: React.FC = () => {
 
         {/* =====================================================
             MOBILE AYURVEDA
-            One viewport-height section
-            Vertical automatic carousel
+            Minimum viewport height + natural content height
         ===================================================== */}
-        <div className="sm:hidden w-full h-full flex flex-col pt-3 pb-3">
+        <div className="sm:hidden w-full flex flex-col pt-3 pb-3">
 
           {/* ===================================================
               MOBILE HEADER
@@ -310,9 +356,16 @@ export const AyurvedaSection: React.FC = () => {
 
           {/* ===================================================
               MOBILE VERTICAL CAROUSEL
+              Fixed 355px internal height
           =================================================== */}
           <div
-            className="flex-1 min-h-0 flex items-center justify-center mt-4"
+            className="
+              shrink-0
+              flex
+              items-center
+              justify-center
+              mt-4
+            "
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onPointerDown={handlePointerDown}
@@ -322,58 +375,86 @@ export const AyurvedaSection: React.FC = () => {
           >
 
             {/* Carousel viewport */}
-            <div className="w-full max-w-[390px] h-full max-h-[355px] overflow-hidden">
+            <div className="w-full max-w-[390px] h-[355px] overflow-hidden">
 
               {/* Vertical track */}
               <div
-                className="w-full h-full transition-transform duration-500 ease-out"
+                className="
+                  w-full
+                  h-full
+                  transition-transform
+                  duration-500
+                  ease-out
+                "
                 style={{
                   transform: `translateY(-${currentIndex * 100}%)`,
                 }}
               >
 
-                {AYURVEDA_SECTION_DATA.pillars.map((pillar, idx) => (
-                  <div
-                    key={pillar.title}
-                    className="w-full h-full min-h-full shrink-0 flex items-center"
-                  >
+                {AYURVEDA_SECTION_DATA.pillars.map(
+                  (pillar, idx) => (
+                    <div
+                      key={pillar.title}
+                      className="
+                        w-full
+                        h-full
+                        min-h-full
+                        shrink-0
+                        flex
+                        items-center
+                      "
+                    >
 
-                    {/* Pillar Card */}
-                    <article className="w-full h-full max-h-[355px] bg-[#DDB477] border border-[#A9783F]/35 p-5 flex flex-col justify-between">
+                      {/* Pillar Card */}
+                      <article
+                        className="
+                          w-full
+                          h-full
+                          max-h-[355px]
+                          bg-[#DDB477]
+                          border
+                          border-[#A9783F]/35
+                          p-5
+                          flex
+                          flex-col
+                          justify-between
+                        "
+                      >
 
-                      <div>
+                        <div>
 
-                        {/* Icon */}
-                        <div className="w-10 h-10 rounded-xs bg-[#FFF5E5] border border-[#A9783F]/40 flex items-center justify-center mb-5">
-                          {icons[idx % icons.length]}
+                          {/* Icon */}
+                          <div className="w-10 h-10 rounded-xs bg-[#FFF5E5] border border-[#A9783F]/40 flex items-center justify-center mb-5">
+                            {icons[idx % icons.length]}
+                          </div>
+
+                          {/* Sanskrit / Category */}
+                          <span className="text-[9px] tracking-[0.2em] uppercase text-[#654F42] font-medium block mb-2">
+                            {pillar.sanskrit}
+                          </span>
+
+                          {/* Pillar Heading */}
+                          <h3 className="font-serif text-[25px] text-[#4A1710] font-normal leading-[1.08] mb-4">
+                            {pillar.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="font-sans text-[11.5px] text-[#5A4638] leading-[1.6] font-normal">
+                            {pillar.description}
+                          </p>
+
                         </div>
 
-                        {/* Sanskrit / Category */}
-                        <span className="text-[9px] tracking-[0.2em] uppercase text-[#654F42] font-medium block mb-2">
-                          {pillar.sanskrit}
-                        </span>
+                        {/* Editorial Label */}
+                        <div className="pt-4 border-t border-[#FFF5E5]/70 text-[8px] tracking-[0.2em] uppercase text-[#654F42] font-medium">
+                          {pillarLabels[idx]}
+                        </div>
 
-                        {/* Pillar Heading */}
-                        <h3 className="font-serif text-[25px] text-[#4A1710] font-normal leading-[1.08] mb-4">
-                          {pillar.title}
-                        </h3>
+                      </article>
 
-                        {/* Description */}
-                        <p className="font-sans text-[11.5px] text-[#5A4638] leading-[1.6] font-normal">
-                          {pillar.description}
-                        </p>
-
-                      </div>
-
-                      {/* Editorial Label */}
-                      <div className="pt-4 border-t border-[#FFF5E5]/70 text-[8px] tracking-[0.2em] uppercase text-[#654F42] font-medium">
-                        {pillarLabels[idx]}
-                      </div>
-
-                    </article>
-
-                  </div>
-                ))}
+                    </div>
+                  )
+                )}
 
               </div>
 
@@ -387,27 +468,29 @@ export const AyurvedaSection: React.FC = () => {
           =================================================== */}
           <div className="shrink-0 flex items-center justify-center gap-2 mt-2.5">
 
-            {AYURVEDA_SECTION_DATA.pillars.map((pillar, index) => (
-              <button
-                key={pillar.title}
-                type="button"
-                aria-label={`View ${pillar.title}`}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  setIsPaused(false);
-                }}
-                className={`
-                  h-[2px]
-                  transition-all
-                  duration-300
-                  ${
-                    currentIndex === index
-                      ? 'w-7 bg-[#4A1710]'
-                      : 'w-3 bg-[#A9783F]/50'
-                  }
-                `}
-              />
-            ))}
+            {AYURVEDA_SECTION_DATA.pillars.map(
+              (pillar, index) => (
+                <button
+                  key={pillar.title}
+                  type="button"
+                  aria-label={`View ${pillar.title}`}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    setIsPaused(false);
+                  }}
+                  className={`
+                    h-[2px]
+                    transition-all
+                    duration-300
+                    ${
+                      currentIndex === index
+                        ? 'w-7 bg-[#4A1710]'
+                        : 'w-3 bg-[#A9783F]/50'
+                    }
+                  `}
+                />
+              )
+            )}
 
           </div>
 

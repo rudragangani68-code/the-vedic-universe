@@ -24,7 +24,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
   /*
    * =========================================================
    * SECTION VISIBILITY
-   * Carousel becomes active only when Products is visible
+   * Carousel becomes active when Products is visible
    * =========================================================
    */
   useEffect(() => {
@@ -69,7 +69,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
           ? 0
           : previousIndex + 1
       );
-    }, 3500);
+    }, 2000);
 
     return () => {
       window.clearInterval(interval);
@@ -162,6 +162,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
    */
   const handlePointerDown = () => {
     if (!isSectionVisible) return;
+
     setIsPaused(true);
   };
 
@@ -174,15 +175,47 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
       ref={sectionRef}
       id="products"
       aria-label="Our Ayurvedic Essentials"
-      className="min-h-[calc(100vh-42px)] h-[calc(100vh-42px)] flex items-center bg-[#DDB477] overflow-hidden"
+      className="
+        h-auto
+        sm:min-h-[calc(100vh-42px)]
+        sm:h-auto
+        flex
+        items-center
+        bg-[#DDB477]
+        overflow-hidden
+      "
     >
-      <div className="w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+      <div
+        className="
+          w-full
+          h-auto
+          sm:h-auto
+          max-w-7xl
+          mx-auto
+          px-4
+          sm:px-6
+          lg:px-10
+        "
+      >
 
         {/* =====================================================
             DESKTOP + TABLET
-            Existing structure remains unchanged
+            Content-driven height.
+            No fixed viewport height.
         ===================================================== */}
-        <div className="hidden sm:flex w-full h-full flex-col justify-center py-7 sm:py-8 lg:py-10">
+        <div
+          className="
+            hidden
+            sm:flex
+            w-full
+            h-auto
+            flex-col
+            justify-center
+            py-7
+            sm:py-8
+            lg:py-10
+          "
+        >
 
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
@@ -205,7 +238,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
 
 
           {/* Product Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 items-stretch">
 
             {products.map((product) => (
               <ProductCard
@@ -232,7 +265,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
 
         {/* =====================================================
             MOBILE
-            Exactly one viewport-height section
+            Equal-height product carousel
         ===================================================== */}
         <div className="sm:hidden w-full h-full flex flex-col pt-3 pb-3">
 
@@ -262,9 +295,10 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
 
           {/* ===================================================
               MOBILE PRODUCT CAROUSEL
+              Fixed-height frame so every product is identical
           =================================================== */}
           <div
-            className="flex-1 min-h-0 flex items-center justify-center mt-3"
+            className="shrink-0 flex items-center justify-center mt-3"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onPointerDown={handlePointerDown}
@@ -274,11 +308,11 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
           >
 
             {/* Single-card viewport */}
-            <div className="w-full max-w-[430px] h-full max-h-[455px] overflow-hidden">
+            <div className="w-full max-w-[430px] h-[455px] overflow-hidden">
 
               {/* Sliding Track */}
               <div
-                className="flex h-full transition-transform duration-500 ease-out"
+                className="flex w-full h-full transition-transform duration-500 ease-out"
                 style={{
                   transform: `translateX(-${currentIndex * 100}%)`,
                 }}
@@ -292,6 +326,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
 
                     {/* =========================================
                         COMPACT MOBILE PRODUCT CARD
+                        Equal height for every product
                     ========================================= */}
                     <article className="w-full h-full flex flex-col bg-[#FFF5E5] border border-[#A9783F]/30 overflow-hidden">
 

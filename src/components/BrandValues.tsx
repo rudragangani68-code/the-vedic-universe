@@ -77,10 +77,7 @@ export const BrandValues: React.FC = () => {
    * =========================================================
    */
   useEffect(() => {
-    if (
-      isPaused ||
-      !isSectionVisible
-    ) {
+    if (isPaused || !isSectionVisible) {
       return;
     }
 
@@ -180,17 +177,51 @@ export const BrandValues: React.FC = () => {
       ref={sectionRef}
       id="values"
       aria-label="Why Us"
-      className="min-h-[calc(100vh-42px)] h-[calc(100vh-42px)] flex items-center bg-[#DDB477] border-b border-[#F3E6D0] overflow-hidden"
+      className="
+        w-full
+        h-auto
+        lg:min-h-[calc(100vh-42px)]
+        lg:h-[calc(100vh-42px)]
+        flex items-center
+        bg-[#DDB477]
+        border-b border-[#F3E6D0]
+        overflow-hidden
+      "
     >
-      <div className="w-full h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+      <div
+        className="
+          w-full
+          h-auto
+          lg:h-full
+          max-w-none
+          lg:max-w-7xl
+          mx-auto
+          px-5 sm:px-8 lg:px-10
+        "
+      >
 
         {/* =====================================================
-            DESKTOP + TABLET
+            TABLET + DESKTOP
         ===================================================== */}
-        <div className="hidden sm:flex w-full h-full flex-col justify-center py-6 sm:py-7 lg:py-8">
+        <div
+          className="
+            hidden
+            sm:flex
+            w-full
+            h-auto
+            lg:h-full
+            flex-col
+            justify-center
+            py-10
+            md:py-12
+            lg:py-8
+          "
+        >
 
-          {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-7">
+          {/* ===================================================
+              SECTION HEADER
+          =================================================== */}
+          <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-7">
 
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#4A1710] tracking-tight mb-1.5">
               Why The Vedic Universe
@@ -210,7 +241,7 @@ export const BrandValues: React.FC = () => {
 
 
           {/* ===================================================
-              DESKTOP 2 × 2 GRID
+              2 × 2 GRID
           =================================================== */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 max-w-5xl mx-auto w-full">
 
@@ -263,18 +294,20 @@ export const BrandValues: React.FC = () => {
 
         {/* =====================================================
             MOBILE
-            Existing mobile composition unchanged
+            Content-driven composition
         ===================================================== */}
-        <div className="sm:hidden w-full h-full flex flex-col">
+        <div className="sm:hidden w-full flex flex-col pt-7 pb-7">
 
-          {/* Mobile Header */}
-          <div className="shrink-0 text-center px-3 pt-4">
+          {/* ===================================================
+              MOBILE HEADER
+          =================================================== */}
+          <div className="shrink-0 text-center px-3">
 
             <h2 className="font-serif text-[32px] leading-[1.03] font-normal text-[#4A1710] tracking-[-0.015em]">
               Why The Vedic Universe
             </h2>
 
-            <span className="text-[8px] tracking-[0.22em] uppercase text-[#705B4B] font-medium block mt-2 mb-2.5">
+            <span className="text-[8px] tracking-[0.22em] uppercase text-[#705B4B] font-medium block mt-2.5 mb-3">
               What Guides Us
             </span>
 
@@ -291,7 +324,14 @@ export const BrandValues: React.FC = () => {
               MOBILE CAROUSEL
           =================================================== */}
           <div
-            className="flex-1 min-h-0 flex flex-col items-center justify-start pt-8"
+            className="
+              flex-none
+              flex
+              flex-col
+              items-center
+              justify-start
+              mt-6
+            "
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onPointerDown={handlePointerDown}
@@ -316,7 +356,19 @@ export const BrandValues: React.FC = () => {
                 {WHY_US_ITEMS.map((item) => (
                   <article
                     key={item.label}
-                    className="w-1/4 h-full shrink-0 bg-[#FFF5E5] border border-[#A9783F]/35 px-5 pt-6 pb-5 flex flex-col"
+                    className="
+                      w-1/4
+                      h-full
+                      shrink-0
+                      bg-[#FFF5E5]
+                      border
+                      border-[#A9783F]/35
+                      px-5
+                      pt-6
+                      pb-5
+                      flex
+                      flex-col
+                    "
                   >
 
                     <span className="text-[9px] tracking-[0.2em] uppercase text-[#A9783F] font-medium">
@@ -352,7 +404,7 @@ export const BrandValues: React.FC = () => {
             {/* =================================================
                 MOBILE INDICATORS
             ================================================= */}
-            <div className="flex items-center justify-center gap-2 mt-5">
+            <div className="flex items-center justify-center gap-2 mt-4">
 
               {WHY_US_ITEMS.map((item, index) => (
                 <button

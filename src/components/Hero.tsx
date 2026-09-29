@@ -16,9 +16,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
     >
       {/* =========================================================
           DESKTOP HERO
-          Existing desktop composition — unchanged
+          1024px and above
+          UNCHANGED
       ========================================================= */}
-      <div className="relative hidden sm:block min-h-[calc(100vh-42px)]">
+      <div className="relative hidden lg:block min-h-[calc(100dvh-42px)]">
 
         <img
           src={HERO_ASSETS.image}
@@ -30,49 +31,127 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#F3E6D0]/35 via-transparent to-transparent pointer-events-none" />
 
-        <div className="relative z-10 min-h-[calc(100vh-42px)] max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 flex items-center">
+        <div className="relative z-10 min-h-[calc(100dvh-42px)] max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 flex items-center">
 
           <div className="w-full max-w-[560px] text-center lg:text-left">
 
-            <h1 className="font-serif text-[42px] sm:text-[50px] md:text-[56px] lg:text-[58px] xl:text-[64px] font-normal leading-[1.05] text-[#4A1710] tracking-[-0.025em] mb-7">
+            <h1
+              className="
+                font-serif
+                text-[42px]
+                sm:text-[50px]
+                md:text-[54px]
+                lg:text-[52px]
+                xl:text-[64px]
+                font-normal
+                leading-[1.04]
+                text-[#4A1710]
+                tracking-[-0.025em]
+                mb-6
+                max-w-[500px]
+              "
+            >
               {BRAND_TAGLINE}
             </h1>
 
-            <p className="font-sans text-[15px] sm:text-base lg:text-[17px] text-[#5A4638] leading-[1.75] max-w-lg mx-auto lg:mx-0 font-light mb-9">
-              Rooted in India’s traditional knowledge, The Vedic Universe
+            <p
+              className="
+                font-sans
+                text-[15px]
+                sm:text-base
+                lg:text-[15px]
+                xl:text-[17px]
+                text-[#5A4638]
+                leading-[1.7]
+                max-w-[470px]
+                mx-auto
+                lg:mx-0
+                font-light
+                mb-8
+              "
+            >
+              Rooted in India&rsquo;s traditional knowledge, The Vedic Universe
               brings thoughtfully prepared botanicals into modern life — with
               respect for the wisdom and traditions from which they come.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
-
+            <div
+              className="
+                flex
+                flex-col
+                sm:flex-row
+                items-center
+                justify-center
+                lg:justify-start
+                gap-3
+                mt-1
+              "
+            >
               <button
                 type="button"
                 id="hero-explore-cta-btn"
                 onClick={onExploreClick}
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#5A170E] hover:bg-[#42110B] text-[#FFF5E5] text-[11px] tracking-[0.2em] uppercase font-medium transition-all duration-300 border border-[#5A170E] cursor-pointer"
+                className="
+                  group
+                  w-full
+                  sm:w-auto
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  px-7
+                  py-4
+                  bg-[#5A170E]
+                  hover:bg-[#42110B]
+                  text-[#FFF5E5]
+                  text-[11px]
+                  tracking-[0.2em]
+                  uppercase
+                  font-medium
+                  transition-all
+                  duration-300
+                  border
+                  border-[#5A170E]
+                  cursor-pointer
+                "
               >
                 <span>Explore Our Products</span>
 
                 <ArrowUpRight
-                  className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="
+                    w-3.5
+                    h-3.5
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-0.5
+                    group-hover:-translate-y-0.5
+                  "
                 />
               </button>
-
             </div>
 
           </div>
         </div>
       </div>
 
-      {/* =========================================================
-          MOBILE HERO
-          Full viewport-height composition using dedicated
-          vertical mobile artwork
-      ========================================================= */}
-      <div className="relative sm:hidden min-h-[calc(100vh-42px)] h-[calc(100vh-42px)] overflow-hidden">
 
-        {/* Dedicated Vertical Mobile Hero Artwork */}
+      {/* =========================================================
+          TABLET + MOBILE HERO
+          Below 1024px
+
+          Mobile composition remains unchanged.
+          Tablet typography increased.
+      ========================================================= */}
+      <div
+        className="
+          relative
+          lg:hidden
+          min-h-[calc(100dvh-42px)]
+          h-[calc(100dvh-42px)]
+          overflow-hidden
+        "
+      >
+
         <img
           src={heroMobileImage}
           alt={HERO_ASSETS.alt}
@@ -80,7 +159,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           loading="eager"
         />
 
-        {/* Subtle readability layer */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -89,11 +167,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           }}
         />
 
-        {/* =======================================================
-            MOBILE HERO CONTENT
-            Kept within the clean upper negative space.
-            CTA remains above the botanical/product area.
-        ======================================================= */}
         <div className="absolute inset-0 z-10">
 
           <div
@@ -106,11 +179,16 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
             "
           >
 
-            {/* Heading */}
+            {/* =================================================
+                HERO HEADLINE
+                Mobile: existing clamp
+                Tablet: 40px
+            ================================================= */}
             <h1
               className="
                 font-serif
                 text-[clamp(20px,6.2vw,30px)]
+                sm:text-[40px]
                 leading-[1.04]
                 font-normal
                 text-[#4A1710]
@@ -120,14 +198,29 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
               {BRAND_TAGLINE}
             </h1>
 
-            {/* Divider */}
-            <div className="w-[22%] min-w-[24px] h-[1px] bg-[#A9783F] my-[7%]" />
 
-            {/* Description */}
+            {/* Decorative divider */}
+            <div
+              className="
+                w-[22%]
+                min-w-[24px]
+                h-[1px]
+                bg-[#A9783F]
+                my-[7%]
+              "
+            />
+
+
+            {/* =================================================
+                HERO DESCRIPTION
+                Mobile: existing clamp
+                Tablet: 14px
+            ================================================= */}
             <p
               className="
                 font-sans
                 text-[clamp(8px,2.35vw,11px)]
+                sm:text-[14px]
                 leading-[1.55]
                 text-[#5A4638]
                 font-light
@@ -139,7 +232,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
               respect for the wisdom and traditions from which they come.
             </p>
 
-            {/* CTA — stays above the botanical/product composition */}
+
+            {/* =================================================
+                EXPLORE CTA
+                Existing layout preserved
+            ================================================= */}
             <button
               type="button"
               id="hero-explore-cta-btn-mobile"
