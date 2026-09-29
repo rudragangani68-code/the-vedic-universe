@@ -1,0 +1,6 @@
+{
+  "name": "The Vedic Universe",
+  "description": "A modern Indian Ayurvedic wellness brand inspired by traditional Indian knowledge and designed for contemporary lifestyles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
