@@ -1,5 +1,5 @@
-import heroVedicProductsImg from '../assets/images/hero.png';
-import acharyaNitanshuImg from '../assets/images/AcharyaImage.png';
+import heroVedicProductsImg from '../assets/images/Hero.png';
+import acharyaNitanshuImg from '../assets/images/Acharyaimage.png';
 import { BrandPrinciple, NavItem } from '../types';
 
 export const BRAND_TAGLINE =
